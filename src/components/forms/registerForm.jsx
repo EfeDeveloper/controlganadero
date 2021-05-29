@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import { Form, Row, Col, Button, Input, Card } from "antd";
 import { BiLock, BiAt } from "react-icons/bi";
 
@@ -96,7 +97,7 @@ function Register() {
                      description={
                         <>
                            <h4>
-                              O ingresar <a href="/login">Ahora!</a>
+                              O ingresar <Link to="/">Ahora!</Link>
                            </h4>
                         </>
                      }

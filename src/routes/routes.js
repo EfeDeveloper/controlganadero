@@ -1,18 +1,21 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import Dashboard from "../pages/dashboard";
 import Login from "../pages/login";
 import Register from "../pages/register";
 import PageNotFound from "../pages/404";
+import PrivateRoutes from "./privateRoutes";
+import PublicRoutes from "./publicRoutes";
+import PageNotFoundRoutes from "./404Routes";
 
 function Routes() {
    return (
       <BrowserRouter>
          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/" component={Dashboard} />
-            <Route path="*" component={PageNotFound} />
+            <PublicRoutes exact path="/" component={Login} />
+            <PublicRoutes exact path="/register" component={Register} />
+            <PrivateRoutes exact path="/dashboard" component={Dashboard} />
+            <PageNotFoundRoutes path="*" component={PageNotFound} />
          </Switch>
       </BrowserRouter>
    );

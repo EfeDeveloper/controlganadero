@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import { Form, Row, Col, Button, Input, Card } from "antd";
 import { BiLock, BiAt } from "react-icons/bi";
 
@@ -66,7 +67,7 @@ function LoginForm() {
                      description={
                         <>
                            <h4>
-                              O Registrase <a href="/register">Ahora!</a>
+                              O Registrase <Link to="/register">Ahora!</Link>
                            </h4>
                         </>
                      }
