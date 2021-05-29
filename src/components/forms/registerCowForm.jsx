@@ -1,6 +1,6 @@
 import React from 'react'
 
-function RegisterCow() {
+function RegisterCowForm() {
     return (
         <div>
             <h1>Estas en register Cow</h1>
@@ -8,4 +8,4 @@ function RegisterCow() {
     )
 }
 
-export default RegisterCow
+export default RegisterCowForm

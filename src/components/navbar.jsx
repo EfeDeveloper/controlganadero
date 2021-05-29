@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { BiHome, BiLogOut } from "react-icons/bi";
-import RegisterCow from "./registerCow";
+import RegisterCowForm from "./forms/registerCowForm";
 import Home from "./home";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -43,7 +43,7 @@ function Navbar(props) {
                   {tabSelected === "1" ? (
                      <Home />
                   ) : tabSelected === "2" ? (
-                     <RegisterCow />
+                     <RegisterCowForm />
                   ) : (
                      ""
                   )}
