@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url(../img/wallpaperCows.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.logo {
+  height: 32px;
+  margin: 16px;
+  background-image: url(../img/control.png);
+  background-size: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+  [data-theme="dark"] .site-layout .site-layout-background {
+    background: #141414;
+  }
+.InputFroms{
+  border-color: #40A9FF;
+  border-radius: 6px;
+}
