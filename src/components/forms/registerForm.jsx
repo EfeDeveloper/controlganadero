@@ -1,23 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom";
 import { Form, Row, Col, Button, Input, Card } from "antd";
+import { useFirebaseApp } from "reactfire";
+import "firebase/auth";
 import { BiLock, BiAt } from "react-icons/bi";
 
 function Register() {
    const [form] = Form.useForm();
    const { Meta } = Card;
-   function onFinish(values) {
-      console.log("Valores enviados", values);
-   }
+   const firebase = useFirebaseApp();
+   const history = useHistory();
+
+   const registerUser = async (values) => {
+      const { email, password } = values;
+      await firebase
+         .auth()
+         .createUserWithEmailAndPassword(email, password)
+         .then(function (response) {
+            if(response){
+               history.push("/dashboard");
+            }
+         })
+         .catch(function (error) {
+            console.log(error);
+         });
+      form.resetFields();
+   };
 
    return (
       <Row justify="center" align="middle" style={{ minHeight: "100vh" }}>
-         <Col s={24} m={12} l={6} lg={4}>
-            <Card title="Bienvenid@s 👋">
+         <Col xs={20} sm={16} md={12} lg={8} xl={6}>
+            <Card title="Bienvenid@s 👋" className="cardForms">
                <Form
                   form={form}
                   name="registerForm"
-                  onFinish={onFinish}
+                  onFinish={registerUser}
                   scrollToFirstError
                   className="login-form"
                >
@@ -47,6 +64,17 @@ function Register() {
                         {
                            required: true,
                            message: "Por favor ingresa tu contraseña!",
+                        },
+                        {
+                           pattern: new RegExp(
+                              "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+                           ),
+                           message:
+                              "Mínimo 8 caracteres, una letra mayúscula, un carácter especial, letras minúsculas y números!",
+                        },
+                        {
+                           whitespace: true,
+                           message: "No se admiten espacios en blanco",
                         },
                      ]}
                      hasFeedback

@@ -1,13 +1,13 @@
 import React from "react";
 import { Redirect, Route, useLocation } from "react-router";
+import { useUser } from "reactfire";
 
 function PrivateRoutes({ component: Component, ...rest }) {
-   const user = null;
-//    const user = { email: "Ed@gmail.com", pass: "123456789" };
+   const user = useUser();
    const location = useLocation();
    return (
       <Route {...rest}>
-         {user ? (
+         {user.data !== null ? (
             <Component />
          ) : (
             <Redirect to={{ pathname: "/", state: { from: location } }} />
